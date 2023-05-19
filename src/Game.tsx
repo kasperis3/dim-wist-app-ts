@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Board from "./components/Board";
 import SetUp from "./components/SetUp";
 
 function Game() {
@@ -9,7 +10,10 @@ function Game() {
       {numPlayers === 0 ? (
         <SetUp setNumPlayers={setNumPlayers} />
       ) : (
-        <div>begin game for {numPlayers} players</div>
+        <>
+          <div>begin game for {numPlayers} players</div>
+          <Board />
+        </>
       )}
     </>
   );
