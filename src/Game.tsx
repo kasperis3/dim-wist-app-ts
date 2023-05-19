@@ -11,8 +11,7 @@ function Game() {
         <SetUp setNumPlayers={setNumPlayers} />
       ) : (
         <>
-          <div>begin game for {numPlayers} players</div>
-          <Board />
+          <Board numPlayers={numPlayers} />
         </>
       )}
     </>
