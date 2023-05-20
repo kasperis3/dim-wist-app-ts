@@ -1,11 +1,12 @@
 import { yieldOrdering } from "../utils/yieldOrder";
 import { yieldSuit } from "../utils/yieldSuit";
+import RowDisplay from "./RowDisplay";
 
 interface iProps {
   numPlayers: number;
 }
 
-interface Row {
+export interface Row {
   hand: string;
   last: number;
   totalSoFar: number;
@@ -21,17 +22,15 @@ const Board = (props: iProps) => {
 
   const rows: Row[] = suitsOrdering.map((hand: string, i: number) => {
     return {
-      hand,
+      hand, // string input, change from key to included as property
       last: playerOrdering[i],
       totalSoFar: 0,
       roundOver: false,
-      bets: [],
-      gets: [],
-      scores: [],
+      bets: [5, 5, 5, 5],
+      gets: [10, 10, 10, 10],
+      scores: [15, 15, 15, 15],
     };
   });
-
-  console.log(rows);
 
   return (
     <div
@@ -39,8 +38,18 @@ const Board = (props: iProps) => {
         props.numPlayers + 1
       } grid-rows-15 gap-1`}
     >
-      {rows.map((row) => {
-        return <div key={row.hand}>Round {row.hand}</div>;
+      {rows.map((row, i: number) => {
+        return (
+          <>
+            <>
+              <div key={row.hand}>Round {row.hand}</div>
+            </>
+            <>
+              <RowDisplay row={row} numPlayers={props.numPlayers} />
+              {/* this is a component containing bets, gets, scores */}
+            </>
+          </>
+        );
       })}{" "}
     </div>
   );
