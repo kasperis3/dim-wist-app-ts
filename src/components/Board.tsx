@@ -33,22 +33,11 @@ const Board = (props: iProps) => {
   });
 
   return (
-    <div
-      className={`container m-auto grid grid-cols-${
-        props.numPlayers + 1
-      } grid-rows-15 gap-1`}
-    >
+    <div className={`container m-auto grid grid-rows-15 gap-1`}>
       {rows.map((row, i: number) => {
         return (
-          <>
-            <>
-              <div key={row.hand}>Round {row.hand}</div>
-            </>
-            <>
-              <RowDisplay row={row} numPlayers={props.numPlayers} />
-              {/* this is a component containing bets, gets, scores */}
-            </>
-          </>
+          <RowDisplay row={row} numPlayers={props.numPlayers} />
+          /* this is a component containing bets, gets, scores */
         );
       })}{" "}
     </div>
