@@ -1,19 +1,31 @@
 import { useState } from "react";
 import Board from "./components/Board";
+import Header from "./components/Header";
 import SetUp from "./components/SetUp";
 
 function Game() {
-  const [numPlayers, setNumPlayers] = useState(0);
+  const [numPlayers, setNumPlayers] = useState(5);
 
   return (
     <>
-      {numPlayers === 0 ? (
+      {/* {numPlayers === 0 ? (
         <SetUp setNumPlayers={setNumPlayers} />
-      ) : (
-        <>
-          <Board numPlayers={numPlayers} />
-        </>
-      )}
+      ) : ( */}
+      <>
+        <Header
+          playersNames={[
+            "Fuzzy",
+            "Duzzy",
+            "Tigger",
+            "Tiger",
+            "Kasper",
+            "Wesley",
+            "Fatty",
+          ]}
+        />
+        <Board numPlayers={numPlayers} />
+      </>
+      {/* )} */}
     </>
   );
 }

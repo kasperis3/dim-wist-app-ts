@@ -1,6 +1,7 @@
 import { yieldOrdering } from "../utils/yieldOrder";
 import { yieldSuit } from "../utils/yieldSuit";
 import RowDisplay from "./RowDisplay";
+import ScoreDisplay from "./ScoreDisplay";
 
 interface iProps {
   numPlayers: number;
@@ -33,13 +34,14 @@ const Board = (props: iProps) => {
   });
 
   return (
-    <div className={`container m-auto grid grid-rows-15 gap-1`}>
+    <div className={`grid grid-rows-15 gap-1 inline`}>
       {rows.map((row, i: number) => {
         return (
           <RowDisplay row={row} numPlayers={props.numPlayers} />
           /* this is a component containing bets, gets, scores */
         );
       })}{" "}
+      <ScoreDisplay row={rows[12]} />
     </div>
   );
 };
