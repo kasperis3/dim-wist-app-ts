@@ -34,9 +34,7 @@ function RowDisplay(props: iProps) {
   return (
     <>
       {/* insight: all arrays have same length */}
-      <div className="col-span-1 inline bg-green-100 rounded text-center">
-        {props.row.hand}
-      </div>
+      <div className="bg-green-100 rounded text-center">{props.row.hand}</div>
       {[...Array(props.numPlayers)].map((_, index) => {
         return (
           <BegetCell

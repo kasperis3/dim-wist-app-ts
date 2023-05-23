@@ -33,7 +33,7 @@ function BegetCell(props: iProps) {
   return (
     <div>
       <div
-        className={`col-span-1 row-span-1 border-2 border-${
+        className={`border-2 border-${
           isLastToPlay === true ? "green" : "indigo"
         }-600 m-1`}
       >

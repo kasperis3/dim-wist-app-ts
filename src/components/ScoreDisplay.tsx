@@ -11,10 +11,10 @@ function ScoreDisplay(props: iProps) {
   return (
     // <div className="grid grid-cols-5 inline">
     <>
-      <div className="col-span-1 text-center">Total Scores</div>
+      <div className="text-center">Total Scores</div>
 
       {props.scores.map((score) => {
-        return <div className="col-span-1 text-center">{score}</div>;
+        return <div className="text-center">{score}</div>;
       })}
     </>
   );

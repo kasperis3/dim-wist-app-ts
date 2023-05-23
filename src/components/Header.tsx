@@ -6,9 +6,9 @@ interface iProps {
 function Header(props: iProps) {
   return (
     <>
-      <div className="col-span-1 text-center">Hand</div>
+      <div className="text-center">Hand</div>
       {props.playersNames.slice(0, props.numPlayers).map((name) => {
-        return <div className="col-span-1 text-center">{name}</div>;
+        return <div className="flex-1 text-center">{name}</div>;
       })}
     </>
   );

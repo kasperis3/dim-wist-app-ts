@@ -30,8 +30,9 @@ const Board = (props: iProps) => {
   };
 
   return (
-    <div className={``}>
-      <div className={`grid grid-cols-${props.numPlayers + 1} grid-rows-1`}>
+    <div className={`flex flex-col`}>
+      {/* <div className={`flex flex-col w-1/${props.numPlayers + 1}`}> */}
+      <div className={`flex flex-row`}>
         <Header
           playersNames={[
             "Fuzzy",
@@ -48,7 +49,7 @@ const Board = (props: iProps) => {
       {props.rows.map((row: Row, i: number) => {
         return (
           <>
-            <div className={`grid grid-cols-${props.numPlayers + 1}`}>
+            <div className={`flex flex-row`}>
               <RowDisplay
                 row={row}
                 numPlayers={props.numPlayers}
@@ -59,7 +60,7 @@ const Board = (props: iProps) => {
           /* this is a component containing bets, gets, scores */
         );
       })}{" "}
-      <div className={`grid grid-cols-${props.numPlayers + 1}`}>
+      <div className={`flex flex-row`}>
         <ScoreDisplay
           scores={scoresTotals}
           rows={props.rows}
