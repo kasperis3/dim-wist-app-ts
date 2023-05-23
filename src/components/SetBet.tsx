@@ -1,5 +1,11 @@
-import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
-import { Row } from "./Board";
+import React, {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
+import { Row } from "../Game";
 
 interface iProps {
   handleBet: (index: number, bet: number) => void;
@@ -17,6 +23,13 @@ function SetBet(props: iProps) {
     setBetSet(true);
     props.handleBet(props.index, +e.target.value);
   };
+
+  //   useEffect(() => {
+  //     console.log("betSet", betSet);
+  //     if (betSet) {
+  //       console.log("inside use effect", props);
+  //     }
+  //   }, [betSet]);
 
   return (
     <div>

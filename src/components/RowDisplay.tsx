@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import BegetCell from "./BegetCell";
-import { Row } from "./Board";
+import { Row } from "../Game";
 
 interface iProps {
   row: Row;
   numPlayers: number;
-  handleScore: (hand: string, scores: number[]) => void;
+  handleScore: (scores: number[]) => void;
 }
 
 function RowDisplay(props: iProps) {
@@ -27,7 +27,7 @@ function RowDisplay(props: iProps) {
     newGets[index] = get;
     props.row.gets[index] = get;
     props.row.scores[index] = get === props.row.bets[index] ? 10 + get : get;
-    props.handleScore(props.row.hand, props.row.scores);
+    props.handleScore(props.row.scores);
     setGets(newGets);
   };
 

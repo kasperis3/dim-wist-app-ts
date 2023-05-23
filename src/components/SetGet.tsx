@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
-import { Row } from "./Board";
+import { Row } from "../Game";
 
 interface iProps {
   handleGet: (index: number, get: number) => void;

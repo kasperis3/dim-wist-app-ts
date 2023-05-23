@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row } from "./Board";
+import { Row } from "../Game";
 import SetBet from "./SetBet";
 import SetGet from "./SetGet";
 
