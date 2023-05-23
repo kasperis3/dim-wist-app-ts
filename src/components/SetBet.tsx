@@ -19,17 +19,15 @@ function SetBet(props: iProps) {
   const [betSet, setBetSet] = useState(false);
   const handleBetInput = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
+    if (!e.target.value.match(/^[0-9]+$/)) {
+      e.target.value = "";
+      alert("Input only a number!");
+      return;
+    }
     // validate target value
     setBetSet(true);
     props.handleBet(props.index, +e.target.value);
   };
-
-  //   useEffect(() => {
-  //     console.log("betSet", betSet);
-  //     if (betSet) {
-  //       console.log("inside use effect", props);
-  //     }
-  //   }, [betSet]);
 
   return (
     <div>
@@ -37,6 +35,8 @@ function SetBet(props: iProps) {
         <>{props.row.bets[props.index]}</>
       ) : (
         <input
+          disabled
+          type="text"
           placeholder={
             props.isLastToPlay
               ? props.cannotBet < 0

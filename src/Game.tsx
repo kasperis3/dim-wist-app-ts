@@ -16,7 +16,7 @@ export interface Row {
 }
 
 function Game() {
-  const [numPlayers, setNumPlayers] = useState(5);
+  const [numPlayers, setNumPlayers] = useState(0);
 
   const suitsOrdering: string[] = yieldSuit();
   const playerOrdering: number[] = yieldOrdering(numPlayers);
@@ -35,13 +35,13 @@ function Game() {
 
   return (
     <>
-      {/* {numPlayers === 0 ? (
+      {numPlayers === 0 ? (
         <SetUp setNumPlayers={setNumPlayers} />
-      ) : ( */}
-      <>
-        <Board numPlayers={numPlayers} rows={rows} />
-      </>
-      {/* )} */}
+      ) : (
+        <>
+          <Board numPlayers={numPlayers} rows={rows} />
+        </>
+      )}
     </>
   );
 }

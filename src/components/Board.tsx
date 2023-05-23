@@ -30,8 +30,8 @@ const Board = (props: iProps) => {
   };
 
   return (
-    <div className={`grid grid-rows-15`}>
-      <div className={`grid grid-cols-${props.numPlayers + 1}`}>
+    <div className={``}>
+      <div className={`grid grid-cols-${props.numPlayers + 1} grid-rows-1`}>
         <Header
           playersNames={[
             "Fuzzy",
