@@ -9,7 +9,8 @@ interface iProps {
 
 function RowDisplay(props: iProps) {
   return (
-    <div className={`grid auto grid-cols-5`}>
+    // <div className={`grid auto grid-cols-5`}>
+    <>
       {/* insight: all arrays have same length */}
       <div className="col-span-1 inline bg-green-100 rounded text-center">
         {props.row.hand}
@@ -17,7 +18,7 @@ function RowDisplay(props: iProps) {
       {props.row.bets.map((_, index) => {
         return <BegetCell index={index} row={props.row} />;
       })}
-    </div>
+    </>
   );
 }
 

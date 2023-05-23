@@ -12,17 +12,6 @@ function Game() {
         <SetUp setNumPlayers={setNumPlayers} />
       ) : ( */}
       <>
-        <Header
-          playersNames={[
-            "Fuzzy",
-            "Duzzy",
-            "Tigger",
-            "Tiger",
-            "Kasper",
-            "Wesley",
-            "Fatty",
-          ]}
-        />
         <Board numPlayers={numPlayers} />
       </>
       {/* )} */}

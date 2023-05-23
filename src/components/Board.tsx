@@ -1,5 +1,6 @@
 import { yieldOrdering } from "../utils/yieldOrder";
 import { yieldSuit } from "../utils/yieldSuit";
+import Header from "./Header";
 import RowDisplay from "./RowDisplay";
 import ScoreDisplay from "./ScoreDisplay";
 
@@ -27,21 +28,41 @@ const Board = (props: iProps) => {
       last: playerOrdering[i],
       totalSoFar: 0,
       roundOver: false,
-      bets: [5, 5, 5, 5],
-      gets: [10, 10, 10, 10],
-      scores: [15, 15, 15, 15],
+      bets: [...Array(props.numPlayers).fill(0)],
+      gets: [...Array(props.numPlayers).fill(0)],
+      scores: [...Array(props.numPlayers).fill(0)],
     };
   });
 
   return (
-    <div className={`grid grid-rows-15 gap-1 inline`}>
-      {rows.map((row, i: number) => {
+    <div className={`grid grid-rows-15`}>
+      <div className={`grid grid-cols-${props.numPlayers + 1}`}>
+        <Header
+          playersNames={[
+            "Fuzzy",
+            "Duzzy",
+            "Tigger",
+            "Tiger",
+            "Kasper",
+            "Wesley",
+            "Fatty",
+          ]}
+          numPlayers={props.numPlayers}
+        />
+      </div>
+      {rows.map((row: Row, i: number) => {
         return (
-          <RowDisplay row={row} numPlayers={props.numPlayers} />
+          <>
+            <div className={`grid grid-cols-${props.numPlayers + 1}`}>
+              <RowDisplay row={row} numPlayers={props.numPlayers} />
+            </div>
+          </>
           /* this is a component containing bets, gets, scores */
         );
       })}{" "}
-      <ScoreDisplay row={rows[12]} />
+      <div className={`grid grid-cols-${props.numPlayers + 1}`}>
+        <ScoreDisplay row={rows[12]} />
+      </div>
     </div>
   );
 };
