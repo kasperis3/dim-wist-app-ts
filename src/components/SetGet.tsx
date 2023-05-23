@@ -1,22 +1,27 @@
-import React, { Dispatch, SetStateAction, ChangeEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
+import { Row } from "./Board";
 
 interface iProps {
-  setGet: Dispatch<SetStateAction<number>>;
-  get: number;
+  handleGet: (index: number, get: number) => void;
+  index: number;
+  row: Row;
 }
 
 function SetGet(props: iProps) {
-  const handleGet = (e: ChangeEvent<HTMLInputElement>) => {
+  const [getSet, setGetSet] = useState(false);
+  const handleGetInput = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    props.setGet(+e.target.value);
+    // validate get
+    setGetSet(true);
+    props.handleGet(props.index, +e.target.value);
   };
 
   return (
     <div>
-      {!!props.get && props.get >= 0 ? (
-        <>{props.get}</>
+      {getSet ? (
+        <>{props.row.gets[props.index]}</>
       ) : (
-        <input placeholder="Enter get" onChange={handleGet}></input>
+        <input placeholder="Enter get" onChange={handleGetInput}></input>
       )}
     </div>
   );

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row } from "./Board";
 
 interface iProps {
-  row: Row;
+  rows: Row[];
+  numPlayers: number;
+  scores: number[];
 }
 
 function ScoreDisplay(props: iProps) {
@@ -11,7 +13,7 @@ function ScoreDisplay(props: iProps) {
     <>
       <div className="col-span-1 text-center">Total Scores</div>
 
-      {props.row.scores.map((score) => {
+      {props.scores.map((score) => {
         return <div className="col-span-1 text-center">{score}</div>;
       })}
     </>

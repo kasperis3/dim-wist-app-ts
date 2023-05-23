@@ -6,37 +6,18 @@ import SetGet from "./SetGet";
 interface iProps {
   row: Row;
   index: number;
+  handleBet: (index: number, bet: number) => void;
+  handleGet: (index: number, get: number) => void;
 }
 
 function BegetCell(props: iProps) {
-  const [get, setGet] = useState(-1);
-  const [bet, setBet] = useState(-1);
-  const [handScore, setHandScore] = useState(-1);
   const [isLastToPlay, setIsLastToPlay] = useState(false);
   const [cannotBet, setCannotBet] = useState(-1);
 
-  const calcHandScore = () => {
-    let handScore = get === bet ? 10 + get : get;
-    setHandScore(handScore);
-    props.row.bets[props.index] = bet;
-    props.row.gets[props.index] = get;
-    props.row.scores[props.index] = handScore;
-    console.log(props);
-  };
-
   const cannotBetX = (): void => {
     let totalHands: number = +props.row.hand.slice(0, -1);
-    let betsSoFar: number = props.row.bets.reduce(
-      (prev, next) => prev + next,
-      0
-    );
-    setCannotBet(totalHands - betsSoFar);
+    setCannotBet(totalHands - props.row.totalSoFar);
   };
-
-  useEffect(() => {
-    if (get < 0) return;
-    calcHandScore();
-  }, [get]);
 
   useEffect(() => {
     let lastToPlay: boolean = props.index === props.row.last - 1;
@@ -44,25 +25,34 @@ function BegetCell(props: iProps) {
   }, []);
 
   useEffect(() => {
-    cannotBetX();
+    if (isLastToPlay) {
+      cannotBetX();
+    }
   });
 
   return (
     <div>
       <div
         className={`col-span-1 row-span-1 border-2 border-${
-          isLastToPlay ? "green" : "indigo"
+          isLastToPlay === true ? "green" : "indigo"
         }-600 m-1`}
       >
         {/* <div className=""> */}
-        <SetBet bet={bet} setBet={setBet} />
-        {isLastToPlay && handScore < 0 ? (
-          <div>Thou cannot bet {cannotBet}</div>
-        ) : null}
+        <SetBet
+          index={props.index}
+          handleBet={props.handleBet}
+          row={props.row}
+          isLastToPlay={isLastToPlay}
+          cannotBet={cannotBet}
+        />
         {/* <div className=""> */}
-        <SetGet get={get} setGet={setGet} />
+        <SetGet
+          index={props.index}
+          handleGet={props.handleGet}
+          row={props.row}
+        />
         {/* </div> */}
-        {handScore < 0 ? <div>{}</div> : <div className=""> {handScore}</div>}
+        {props.row.scores[props.index]}
       </div>
     </div>
   );
