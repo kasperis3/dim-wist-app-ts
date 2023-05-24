@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BegetCell from "./BegetCell";
 import { Row } from "../Game";
+import { basisTypes } from "../utils/basis";
 
 interface iProps {
   row: Row;
@@ -11,6 +12,8 @@ interface iProps {
 function RowDisplay(props: iProps) {
   const [bets, setBets] = useState(props.row.bets);
   const [gets, setGets] = useState(props.row.gets);
+
+  const basis = basisTypes[props.numPlayers];
 
   const handleBet = (index: number, bet: number) => {
     // validate bet
@@ -34,7 +37,9 @@ function RowDisplay(props: iProps) {
   return (
     <>
       {/* insight: all arrays have same length */}
-      <div className="bg-green-100 rounded text-center">{props.row.hand}</div>
+      <div className={`${basis} bg-green-100 rounded text-center`}>
+        {props.row.hand}
+      </div>
       {[...Array(props.numPlayers)].map((_, index) => {
         return (
           <BegetCell
@@ -42,6 +47,7 @@ function RowDisplay(props: iProps) {
             row={props.row}
             handleBet={handleBet}
             handleGet={handleGet}
+            numPlayers={props.numPlayers}
           />
         );
       })}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Row } from "../Game";
+import { basisTypes } from "../utils/basis";
 import SetBet from "./SetBet";
 import SetGet from "./SetGet";
 
@@ -8,11 +9,14 @@ interface iProps {
   index: number;
   handleBet: (index: number, bet: number) => void;
   handleGet: (index: number, get: number) => void;
+  numPlayers: number;
 }
 
 function BegetCell(props: iProps) {
   const [isLastToPlay, setIsLastToPlay] = useState(false);
   const [cannotBet, setCannotBet] = useState(-1);
+
+  const basis = basisTypes[props.numPlayers];
 
   const cannotBetX = (): void => {
     let totalHands: number = +props.row.hand.slice(0, -1);
@@ -31,29 +35,23 @@ function BegetCell(props: iProps) {
   });
 
   return (
-    <div>
-      <div
-        className={`border-2 border-${
-          isLastToPlay === true ? "green" : "indigo"
-        }-600 m-1`}
-      >
-        {/* <div className=""> */}
-        <SetBet
-          index={props.index}
-          handleBet={props.handleBet}
-          row={props.row}
-          isLastToPlay={isLastToPlay}
-          cannotBet={cannotBet}
-        />
-        {/* <div className=""> */}
-        <SetGet
-          index={props.index}
-          handleGet={props.handleGet}
-          row={props.row}
-        />
-        {/* </div> */}
-        {props.row.scores[props.index]}
-      </div>
+    <div
+      className={`${basis} border-2 border-${
+        isLastToPlay === true ? "green" : "indigo"
+      }-600 m-1`}
+    >
+      {/* <div className=""> */}
+      <SetBet
+        index={props.index}
+        handleBet={props.handleBet}
+        row={props.row}
+        isLastToPlay={isLastToPlay}
+        cannotBet={cannotBet}
+      />
+      {/* <div className=""> */}
+      <SetGet index={props.index} handleGet={props.handleGet} row={props.row} />
+      {/* </div> */}
+      {props.row.scores[props.index]}
     </div>
   );
 }

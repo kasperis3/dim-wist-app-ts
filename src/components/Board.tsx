@@ -42,21 +42,22 @@ const Board = (props: iProps) => {
             "Kasper",
             "Wesley",
             "Fatty",
+            "Goose",
+            "Moose",
           ]}
           numPlayers={props.numPlayers}
         />
       </div>
       {props.rows.map((row: Row, i: number) => {
         return (
-          <>
-            <div className={`flex flex-row`}>
-              <RowDisplay
-                row={row}
-                numPlayers={props.numPlayers}
-                handleScore={handleScore}
-              />
-            </div>
-          </>
+          <div className={`flex flex-row`}>
+            <RowDisplay
+              row={row}
+              numPlayers={props.numPlayers}
+              handleScore={handleScore}
+            />
+          </div>
+
           /* this is a component containing bets, gets, scores */
         );
       })}{" "}
