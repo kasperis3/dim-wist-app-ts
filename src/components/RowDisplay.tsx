@@ -24,6 +24,14 @@ function RowDisplay(props: iProps) {
     setBets(newBets);
   };
 
+  const handleReset = (index: number) => {
+    let newBets = [...bets];
+    newBets[index] = 0;
+    props.row.totalSoFar -= props.row.bets[index];
+    props.row.bets[index] = 0;
+    setBets(newBets);
+  };
+
   const handleGet = (index: number, get: number) => {
     // validate get
     let newGets = [...gets];
@@ -45,6 +53,7 @@ function RowDisplay(props: iProps) {
           <BegetCell
             index={index}
             row={props.row}
+            handleReset={handleReset}
             handleBet={handleBet}
             handleGet={handleGet}
             numPlayers={props.numPlayers}
