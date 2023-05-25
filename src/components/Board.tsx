@@ -47,8 +47,6 @@ const Board = (props: iProps) => {
               handleScore={handleScore}
             />
           </div>
-
-          /* this is a component containing bets, gets, scores */
         );
       })}{" "}
       <div className={`flex flex-row border border-2 border-orange-100 m-.5`}>
