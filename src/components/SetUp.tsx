@@ -1,6 +1,5 @@
-import { Dispatch, SetStateAction, ChangeEvent } from "react";
-
-export type Dispatcher<S> = Dispatch<SetStateAction<S>>;
+import { ChangeEvent } from "react";
+import { Dispatcher } from "../utils/types";
 
 interface IProps {
   setNumPlayers: Dispatcher<number>;

@@ -35,6 +35,7 @@ function SetGet(props: iProps) {
         <>{props.row.gets[props.index]}</>
       ) : ( */}
       <input
+        className="w-full"
         disabled={props.row.numberBetsPlaced !== props.numPlayers}
         placeholder="Enter get"
         onChange={handleGetInput}

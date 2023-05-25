@@ -1,10 +1,4 @@
-import React, {
-  ChangeEvent,
-  FormEvent,
-  KeyboardEvent,
-  useEffect,
-  useState,
-} from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
 import { Row } from "../Game";
 
 interface iProps {
@@ -28,12 +22,15 @@ function SetBet(props: iProps) {
 
   const handleBetInput = (e: ChangeEvent<HTMLInputElement>) => {
     const regex1 = /^[0-9]+$/;
-    console.log(e.target.value);
+    console.log(props, e.target.value);
     if (regex1.test(e.target.value)) {
       if (props.isLastToPlay) {
         if (+e.target.value === props.cannotBet) {
           setError(true);
           e.target.value = "";
+          setTimeout(() => {
+            setError(false);
+          }, 1000);
           return;
         } else {
           setError(false);
@@ -47,19 +44,25 @@ function SetBet(props: iProps) {
 
   return (
     <div>
-      {error ? `Cannot bet ${props.cannotBet}` : null}
-      <input
-        type="text"
-        placeholder={
-          props.isLastToPlay
-            ? props.cannotBet < 0
-              ? "Bet whatever!"
-              : `Cannot bet ${props.cannotBet}`
-            : "Enter Bet"
-        }
-        onKeyDown={handleKeyDown}
-        onChange={handleBetInput}
-      />
+      {error ? (
+        <div className="bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500 block w-full ">
+          Cannot bet {props.cannotBet}
+        </div>
+      ) : (
+        <input
+          className="w-full focus:ring-green-500"
+          type="text"
+          placeholder={
+            props.isLastToPlay
+              ? props.cannotBet < 0
+                ? "Bet whatever!"
+                : `Cannot bet ${props.cannotBet}`
+              : "Enter Bet"
+          }
+          onKeyDown={handleKeyDown}
+          onChange={handleBetInput}
+        />
+      )}
     </div>
   );
 }

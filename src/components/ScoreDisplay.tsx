@@ -12,7 +12,6 @@ function ScoreDisplay(props: iProps) {
   const basis = basisTypes[props.numPlayers];
 
   return (
-    // <div className="grid grid-cols-5 inline">
     <>
       <div className={`${basis} text-center`}>Total Scores</div>
 

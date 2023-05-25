@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row } from "../Game";
+import { Row } from "../utils/types";
 import { basisTypes } from "../utils/basis";
 import SetBet from "./SetBet";
 import SetGet from "./SetGet";
@@ -37,8 +37,13 @@ function BegetCell(props: iProps) {
   });
 
   return (
-    <div className={`${basis} rounded border border-solid border-indigo-600`}>
-      {/* <div className=""> */}
+    <div
+      className={
+        isLastToPlay
+          ? `${basis} rounded border border-solid border-4 border-red-600`
+          : `${basis} rounded border border-solid`
+      }
+    >
       <SetBet
         index={props.index}
         handleBet={props.handleBet}
@@ -47,7 +52,7 @@ function BegetCell(props: iProps) {
         isLastToPlay={isLastToPlay}
         cannotBet={cannotBet}
       />
-      {/* <div className=""> */}
+
       <SetGet
         index={props.index}
         handleGet={props.handleGet}
@@ -55,8 +60,10 @@ function BegetCell(props: iProps) {
         numPlayers={props.numPlayers}
         row={props.row}
       />
-      {/* </div> */}
-      {props.row.scores[props.index]}
+
+      <div className="bg-yellow-100 text-center">
+        {props.row.scores[props.index]}
+      </div>
     </div>
   );
 }

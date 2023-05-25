@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { Row } from "../Game";
-import { yieldOrdering } from "../utils/yieldOrder";
-import { yieldSuit } from "../utils/yieldSuit";
+import { Row } from "../utils/types";
 import Header from "./Header";
 import RowDisplay from "./RowDisplay";
 import ScoreDisplay from "./ScoreDisplay";
@@ -23,8 +21,8 @@ const Board = (props: iProps) => {
   };
 
   return (
-    <div className={`flex flex-col`}>
-      <div className={`flex flex-row`}>
+    <div className={`flex flex-col m-.5`}>
+      <div className={`flex flex-row m-.5`}>
         <Header
           playersNames={[
             "Fuzzy",
@@ -42,7 +40,7 @@ const Board = (props: iProps) => {
       </div>
       {props.rows.map((row: Row, i: number) => {
         return (
-          <div className={`flex flex-row`}>
+          <div className={`flex flex-row m-.5`}>
             <RowDisplay
               row={row}
               numPlayers={props.numPlayers}
@@ -53,7 +51,7 @@ const Board = (props: iProps) => {
           /* this is a component containing bets, gets, scores */
         );
       })}{" "}
-      <div className={`flex flex-row`}>
+      <div className={`flex flex-row border border-2 border-orange-100 m-.5`}>
         <ScoreDisplay
           scores={scoresTotals}
           rows={props.rows}

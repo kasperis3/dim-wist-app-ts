@@ -2,19 +2,9 @@ import { useState } from "react";
 import Board from "./components/Board";
 import Header from "./components/Header";
 import SetUp from "./components/SetUp";
+import { Row } from "./utils/types";
 import { yieldOrdering } from "./utils/yieldOrder";
 import { yieldSuit } from "./utils/yieldSuit";
-
-export interface Row {
-  hand: string;
-  last: number;
-  totalSoFar: number;
-  roundOver: boolean;
-  bets: number[];
-  gets: number[];
-  scores: number[];
-  numberBetsPlaced: number;
-}
 
 function Game() {
   const [numPlayers, setNumPlayers] = useState(0);
