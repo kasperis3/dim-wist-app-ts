@@ -32,6 +32,15 @@ function RowDisplay(props: iProps) {
     setBets(newBets);
   };
 
+  const handleResetGet = (index: number) => {
+    let newGets = [...gets];
+    newGets[index] = 0;
+    props.row.gets[index] = 0;
+    setGets(gets);
+    props.row.scores[index] *= -1;
+    props.handleScore(props.row.scores);
+  };
+
   const handleGet = (index: number, get: number) => {
     // validate get
     let newGets = [...gets];
@@ -54,6 +63,7 @@ function RowDisplay(props: iProps) {
             index={index}
             row={props.row}
             handleReset={handleReset}
+            handleResetGet={handleResetGet}
             handleBet={handleBet}
             handleGet={handleGet}
             numPlayers={props.numPlayers}

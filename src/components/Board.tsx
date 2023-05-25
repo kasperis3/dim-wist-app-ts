@@ -17,11 +17,6 @@ const Board = (props: iProps) => {
   ]);
 
   const handleScore = (rowScores: number[]) => {
-    // props.rows.forEach((row) => {
-    //   row.scores.forEach((score: number, i: number) => {
-    //     scoresTotals[i] += score;
-    //   });
-    // });
     let newScores = scoresTotals.map((scoresTotal: number, index: number) => {
       return scoresTotal + rowScores[index];
     });
@@ -31,7 +26,6 @@ const Board = (props: iProps) => {
 
   return (
     <div className={`flex flex-col`}>
-      {/* <div className={`flex flex-col w-1/${props.numPlayers + 1}`}> */}
       <div className={`flex flex-row`}>
         <Header
           playersNames={[

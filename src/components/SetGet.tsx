@@ -1,33 +1,44 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import { Row } from "../Game";
 
 interface iProps {
   handleGet: (index: number, get: number) => void;
+  handleResetGet: (index: number) => void;
   index: number;
   row: Row;
 }
 
 function SetGet(props: iProps) {
   const [getSet, setGetSet] = useState(false);
-  const handleGetInput = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    // validate get
-    if (!e.target.value.match(/^[0-9]+$/)) {
-      e.target.value = "";
-      alert("Input only a number!");
-      return;
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    // does not handle the case of replaced text...
+    if (e.key === "Backspace") {
+      console.log("backspace pressed");
+      props.handleResetGet(props.index);
     }
-    setGetSet(true);
-    props.handleGet(props.index, +e.target.value);
+  };
+
+  const handleGetInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const regex = /^[0-9\b]+$/;
+    if (e.target.value === "" || regex.test(e.target.value)) {
+      props.handleGet(props.index, +e.target.value);
+    } else {
+      e.target.value = "";
+    }
   };
 
   return (
     <div>
-      {getSet ? (
+      {/* {getSet ? (
         <>{props.row.gets[props.index]}</>
-      ) : (
-        <input disabled placeholder="Enter get" onChange={handleGetInput} />
-      )}
+      ) : ( */}
+      <input
+        placeholder="Enter get"
+        onChange={handleGetInput}
+        onKeyDown={handleKeyDown}
+      />
+      {/* )} */}
     </div>
   );
 }

@@ -10,6 +10,7 @@ interface iProps {
   handleBet: (index: number, bet: number) => void;
   handleGet: (index: number, get: number) => void;
   handleReset: (index: number) => void;
+  handleResetGet: (index: number) => void;
   numPlayers: number;
 }
 
@@ -36,11 +37,7 @@ function BegetCell(props: iProps) {
   });
 
   return (
-    <div
-      className={`${basis} border-${
-        isLastToPlay === true ? "green" : "indigo"
-      }-600`}
-    >
+    <div className={`${basis} rounded border border-solid border-indigo-600`}>
       {/* <div className=""> */}
       <SetBet
         index={props.index}
@@ -51,7 +48,12 @@ function BegetCell(props: iProps) {
         cannotBet={cannotBet}
       />
       {/* <div className=""> */}
-      <SetGet index={props.index} handleGet={props.handleGet} row={props.row} />
+      <SetGet
+        index={props.index}
+        handleGet={props.handleGet}
+        handleResetGet={props.handleResetGet}
+        row={props.row}
+      />
       {/* </div> */}
       {props.row.scores[props.index]}
     </div>

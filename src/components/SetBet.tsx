@@ -1,4 +1,10 @@
-import React, { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  KeyboardEvent,
+  useEffect,
+  useState,
+} from "react";
 import { Row } from "../Game";
 
 interface iProps {
@@ -11,9 +17,10 @@ interface iProps {
 }
 
 function SetBet(props: iProps) {
-  const [betSet, setBetSet] = useState(false);
+  //   const [bet, setBet] = useState(-1);
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    // does not handle the case of replaced text...
     if (e.key === "Backspace") {
       console.log("backspace pressed");
       props.handleReset(props.index);
@@ -21,26 +28,16 @@ function SetBet(props: iProps) {
   };
 
   const handleBetInput = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-
-    // handle backSpace/delete
-    console.log(e.target.value);
-
-    if (!e.target.value.match(/(^[0-9]+$)/)) {
+    const regex = /^[0-9\b]+$/;
+    if (e.target.value === "" || regex.test(e.target.value)) {
+      props.handleBet(props.index, +e.target.value);
+    } else {
       e.target.value = "";
-      alert("Input only a number!");
-      return;
     }
-    // validate target value
-    // setBetSet(true);
-    props.handleBet(props.index, +e.target.value);
   };
 
   return (
     <div>
-      {/* {betSet ? (
-        <>{props.row.bets[props.index]}</>
-      ) : ( */}
       <input
         type="text"
         placeholder={
@@ -52,8 +49,7 @@ function SetBet(props: iProps) {
         }
         onKeyDown={handleKeyDown}
         onChange={handleBetInput}
-      ></input>
-      {/* )} */}
+      />
     </div>
   );
 }
