@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row } from "../Game";
+import { Row } from "../utils/types";
 import { basisTypes } from "../utils/basis";
 
 interface iProps {
