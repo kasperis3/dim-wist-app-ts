@@ -16,11 +16,9 @@ const Board = (props: iProps) => {
     ...Array(props.numPlayers).fill(0),
   ]);
 
-  const handleScore = (rowScores: number[]) => {
-    let newScores = scoresTotals.map((scoresTotal: number, index: number) => {
-      return scoresTotal + rowScores[index];
-    });
-    // let newScores = [...scoresTotals];
+  const handleScore = (rowScores: number[], index: number) => {
+    scoresTotals[index] += rowScores[index];
+    let newScores = [...scoresTotals];
     setScoresTotals(newScores);
   };
 

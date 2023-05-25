@@ -5,6 +5,7 @@
 TODO:
 
 - validate bet and gets
+- workflow: gets cannot be entered until bets are all in
 - change player names
 - style/change input elements
 - add card suit icons for hand column

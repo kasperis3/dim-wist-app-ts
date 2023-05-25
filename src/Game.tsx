@@ -13,6 +13,7 @@ export interface Row {
   bets: number[];
   gets: number[];
   scores: number[];
+  numberBetsPlaced: number;
 }
 
 function Game() {
@@ -30,6 +31,7 @@ function Game() {
       bets: [...Array(numPlayers).fill(0)],
       gets: [...Array(numPlayers).fill(0)],
       scores: [...Array(numPlayers).fill(0)],
+      numberBetsPlaced: 0,
     };
   });
 

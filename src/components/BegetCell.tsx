@@ -52,6 +52,7 @@ function BegetCell(props: iProps) {
         index={props.index}
         handleGet={props.handleGet}
         handleResetGet={props.handleResetGet}
+        numPlayers={props.numPlayers}
         row={props.row}
       />
       {/* </div> */}

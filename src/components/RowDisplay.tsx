@@ -6,7 +6,7 @@ import { basisTypes } from "../utils/basis";
 interface iProps {
   row: Row;
   numPlayers: number;
-  handleScore: (scores: number[]) => void;
+  handleScore: (scores: number[], index: number) => void;
 }
 
 function RowDisplay(props: iProps) {
@@ -21,6 +21,8 @@ function RowDisplay(props: iProps) {
     newBets[index] = bet;
     props.row.bets[index] = bet;
     props.row.totalSoFar += bet;
+    props.row.numberBetsPlaced++;
+    console.log("inside handlebet", props);
     setBets(newBets);
   };
 
@@ -29,6 +31,7 @@ function RowDisplay(props: iProps) {
     newBets[index] = 0;
     props.row.totalSoFar -= props.row.bets[index];
     props.row.bets[index] = 0;
+    props.row.numberBetsPlaced--;
     setBets(newBets);
   };
 
@@ -38,7 +41,7 @@ function RowDisplay(props: iProps) {
     props.row.gets[index] = 0;
     setGets(gets);
     props.row.scores[index] *= -1;
-    props.handleScore(props.row.scores);
+    props.handleScore(props.row.scores, index);
   };
 
   const handleGet = (index: number, get: number) => {
@@ -47,7 +50,7 @@ function RowDisplay(props: iProps) {
     newGets[index] = get;
     props.row.gets[index] = get;
     props.row.scores[index] = get === props.row.bets[index] ? 10 + get : get;
-    props.handleScore(props.row.scores);
+    props.handleScore(props.row.scores, index);
     setGets(newGets);
   };
 

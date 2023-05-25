@@ -4,6 +4,7 @@ import { Row } from "../Game";
 interface iProps {
   handleGet: (index: number, get: number) => void;
   handleResetGet: (index: number) => void;
+  numPlayers: number;
   index: number;
   row: Row;
 }
@@ -34,6 +35,7 @@ function SetGet(props: iProps) {
         <>{props.row.gets[props.index]}</>
       ) : ( */}
       <input
+        disabled={props.row.numberBetsPlaced !== props.numPlayers}
         placeholder="Enter get"
         onChange={handleGetInput}
         onKeyDown={handleKeyDown}

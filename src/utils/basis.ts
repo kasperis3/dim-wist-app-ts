@@ -3,6 +3,7 @@ export type basis = {
 };
 
 export const basisTypes: basis = {
+  4: "basis-1/5 grow-0 shrink-0",
   5: "basis-1/6 grow-0 shrink-0",
   6: "basis-1/7 grow-0 shrink-0",
   7: "basis-1/8 grow-0 shrink-0",

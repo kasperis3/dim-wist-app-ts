@@ -17,10 +17,9 @@ interface iProps {
 }
 
 function SetBet(props: iProps) {
-  //   const [bet, setBet] = useState(-1);
+  const [error, setError] = useState(false);
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    // does not handle the case of replaced text...
     if (e.key === "Backspace") {
       console.log("backspace pressed");
       props.handleReset(props.index);
@@ -28,8 +27,18 @@ function SetBet(props: iProps) {
   };
 
   const handleBetInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const regex = /^[0-9\b]+$/;
-    if (e.target.value === "" || regex.test(e.target.value)) {
+    const regex1 = /^[0-9]+$/;
+    console.log(e.target.value);
+    if (regex1.test(e.target.value)) {
+      if (props.isLastToPlay) {
+        if (+e.target.value === props.cannotBet) {
+          setError(true);
+          e.target.value = "";
+          return;
+        } else {
+          setError(false);
+        }
+      }
       props.handleBet(props.index, +e.target.value);
     } else {
       e.target.value = "";
@@ -38,6 +47,7 @@ function SetBet(props: iProps) {
 
   return (
     <div>
+      {error ? `Cannot bet ${props.cannotBet}` : null}
       <input
         type="text"
         placeholder={
