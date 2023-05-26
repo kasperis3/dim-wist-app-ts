@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import BegetCell from "./BegetCell";
-import { Row } from "../Game";
+import { Row } from "../utils/types";
 import { basisTypes } from "../utils/basis";
 
 interface iProps {
