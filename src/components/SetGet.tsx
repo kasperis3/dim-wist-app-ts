@@ -30,7 +30,7 @@ function SetGet(props: iProps) {
   };
 
   return (
-    <div className="basis-1/2">
+    <div className="basis-1/2 grow-0 shrink-0">
       {/* {getSet ? (
         <>{props.row.gets[props.index]}</>
       ) : ( */}

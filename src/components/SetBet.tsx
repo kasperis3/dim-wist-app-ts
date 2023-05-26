@@ -43,7 +43,7 @@ function SetBet(props: iProps) {
   };
 
   return (
-    <div className="basis-1/2">
+    <div className="basis-1/2 grow-0 shrink-0">
       {error ? (
         <div className="bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500 block w-full">
           Can't bet {props.cannotBet}
