@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from "react";
-import { Row } from "../Game";
+import { Row } from "../utils/types";
 
 interface iProps {
   handleGet: (index: number, get: number) => void;
@@ -30,7 +30,7 @@ function SetGet(props: iProps) {
   };
 
   return (
-    <div>
+    <div className="basis-1/2">
       {/* {getSet ? (
         <>{props.row.gets[props.index]}</>
       ) : ( */}

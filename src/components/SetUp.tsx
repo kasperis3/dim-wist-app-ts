@@ -12,10 +12,17 @@ const SetUp = (props: IProps) => {
   };
 
   return (
-    <>
-      Enter number players:{" "}
-      <input onChange={handleNumPlayers} type="text" pattern="\d+" />
-    </>
+    <div className="h-screen flex justify-center items-center">
+      <label>
+        Enter number players:
+        <input
+          className="border border-4 border-blue-400 w-20"
+          onChange={handleNumPlayers}
+          type="text"
+          pattern="\d+"
+        />
+      </label>
+    </div>
   );
 };
 

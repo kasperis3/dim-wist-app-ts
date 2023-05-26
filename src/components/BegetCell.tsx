@@ -40,8 +40,8 @@ function BegetCell(props: iProps) {
     <div
       className={
         isLastToPlay
-          ? `${basis} rounded border border-solid border-4 border-red-600`
-          : `${basis} rounded border border-solid`
+          ? `${basis} rounded border border-solid border-4 border-red-600 flex flex-row flex-wrap`
+          : `${basis} rounded border border-solid flex flex-row flex-wrap`
       }
     >
       <SetBet
@@ -61,7 +61,7 @@ function BegetCell(props: iProps) {
         row={props.row}
       />
 
-      <div className="bg-yellow-100 text-center">
+      <div className="bg-yellow-100 text-center basis-full">
         {props.row.scores[props.index]}
       </div>
     </div>

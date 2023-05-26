@@ -1,5 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
-import { Row } from "../Game";
+import { Row } from "../utils/types";
 
 interface iProps {
   handleBet: (index: number, bet: number) => void;
@@ -43,10 +43,10 @@ function SetBet(props: iProps) {
   };
 
   return (
-    <div>
+    <div className="basis-1/2">
       {error ? (
-        <div className="bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500 block w-full ">
-          Cannot bet {props.cannotBet}
+        <div className="bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500 block w-full">
+          Can't bet {props.cannotBet}
         </div>
       ) : (
         <input
@@ -56,7 +56,7 @@ function SetBet(props: iProps) {
             props.isLastToPlay
               ? props.cannotBet < 0
                 ? "Bet whatever!"
-                : `Cannot bet ${props.cannotBet}`
+                : `Can't bet ${props.cannotBet}`
               : "Enter Bet"
           }
           onKeyDown={handleKeyDown}
