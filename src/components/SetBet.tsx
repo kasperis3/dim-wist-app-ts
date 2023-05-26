@@ -15,7 +15,7 @@ function SetBet(props: iProps) {
   const [isBetSet, setIsBetSet] = useState(false);
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Backspace") {
+    if (e.key === "Backspace" && isBetSet) {
       console.log("backspace pressed");
       props.handleReset(props.index);
       setIsBetSet(false);
