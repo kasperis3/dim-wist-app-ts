@@ -50,7 +50,7 @@ function SetBet(props: iProps) {
         </div>
       ) : (
         <input
-          className="w-full focus:ring-green-500"
+          className="w-full focus:ring-green-500 text-xs"
           type="text"
           placeholder={
             props.isLastToPlay

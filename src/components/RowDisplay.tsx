@@ -57,7 +57,9 @@ function RowDisplay(props: iProps) {
   return (
     <>
       {/* insight: all arrays have same length */}
-      <div className={`${basis} bg-green-100 rounded text-center`}>
+      <div
+        className={`${basis} flex bg-green-100 rounded text-center text-xl items-center justify-center border`}
+      >
         {props.row.hand}
       </div>
       {[...Array(props.numPlayers)].map((_, index) => {
