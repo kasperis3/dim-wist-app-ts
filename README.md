@@ -5,3 +5,4 @@
 TODO:
 
 - validate gets
+- update bet for 2 digit bets
