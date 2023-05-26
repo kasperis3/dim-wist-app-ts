@@ -12,17 +12,19 @@ interface iProps {
 
 function SetBet(props: iProps) {
   const [error, setError] = useState(false);
+  const [isBetSet, setIsBetSet] = useState(false);
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Backspace") {
       console.log("backspace pressed");
       props.handleReset(props.index);
+      setIsBetSet(false);
     }
   };
 
   const handleBetInput = (e: ChangeEvent<HTMLInputElement>) => {
     const regex1 = /^[0-9]+$/;
-    console.log(props, e.target.value);
+    if (isBetSet) return;
     if (regex1.test(e.target.value)) {
       if (props.isLastToPlay) {
         if (+e.target.value === props.cannotBet) {
@@ -36,6 +38,7 @@ function SetBet(props: iProps) {
           setError(false);
         }
       }
+      setIsBetSet(true);
       props.handleBet(props.index, +e.target.value);
     } else {
       e.target.value = "";
@@ -60,7 +63,7 @@ function SetBet(props: iProps) {
               : "Enter Bet"
           }
           onKeyDown={handleKeyDown}
-          onChange={handleBetInput}
+          onBlur={handleBetInput}
         />
       )}
     </div>
