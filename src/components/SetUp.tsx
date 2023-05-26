@@ -7,8 +7,13 @@ interface IProps {
 
 const SetUp = (props: IProps) => {
   const handleNumPlayers = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    props.setNumPlayers(+e.target.value);
+    const regex1 = /^[0-9]+$/;
+    let attempt = e.target.value;
+    if (regex1.test(attempt) && +attempt >= 2 && +attempt < 10) {
+      props.setNumPlayers(+attempt);
+    } else {
+      e.target.value = "";
+    }
   };
 
   return (
@@ -20,7 +25,7 @@ const SetUp = (props: IProps) => {
       </div>
       <div>
         <label>
-          Enter number players:
+          Enter number players (2-9):
           <input
             className="border border-4 border-blue-400 w-20"
             onChange={handleNumPlayers}
