@@ -23,20 +23,7 @@ const Board = (props: iProps) => {
   return (
     <div className={`flex flex-col m-.5`}>
       <div className={`flex flex-row m-.5`}>
-        <Header
-          playersNames={[
-            "Fuzzy",
-            "Duzzy",
-            "Tigger",
-            "Tiger",
-            "Kasper",
-            "Wesley",
-            "Fatty",
-            "Goose",
-            "Moose",
-          ]}
-          numPlayers={props.numPlayers}
-        />
+        <Header numPlayers={props.numPlayers} />
       </div>
       {props.rows.map((row: Row, i: number) => {
         return (
