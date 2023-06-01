@@ -7,6 +7,5 @@ describe("Header", () => {
     const utils = render(<Header numPlayers={4} />);
     screen.debug();
     const inputs = screen.getAllByRole("textbox");
-    console.log(inputs);
   });
 });
