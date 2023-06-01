@@ -4,7 +4,9 @@ import Header from "./Header";
 
 describe("Header", () => {
   it("renders Header", () => {
-    render(<Header numPlayers={4} />);
+    const utils = render(<Header numPlayers={4} />);
     screen.debug();
+    const inputs = screen.getAllByRole("textbox");
+    console.log(inputs);
   });
 });
