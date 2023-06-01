@@ -10,4 +10,13 @@ describe("Game test suite", () => {
     await user.type(getByRole("textbox"), "5");
     await waitFor(() => expect(getByText("Hand")).toBeInTheDocument());
   });
+
+  it("Game does not render Board if numPlayers incorrectly entered", async () => {
+    const { getByText, getByRole } = render(<Game />);
+    const user = userEvent.setup();
+    await user.type(getByRole("textbox"), "0");
+    await waitFor(() =>
+      expect(getByText("Enter number players (2-9):")).toBeInTheDocument()
+    );
+  });
 });
