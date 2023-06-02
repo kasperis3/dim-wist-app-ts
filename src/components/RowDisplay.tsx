@@ -10,6 +10,7 @@ interface iProps {
 }
 
 function RowDisplay(props: iProps) {
+  console.log(props.row);
   const [bets, setBets] = useState(props.row.bets);
   const [gets, setGets] = useState(props.row.gets);
 
