@@ -15,8 +15,12 @@ function ScoreDisplay(props: iProps) {
     <>
       <div className={`${basis} text-center`}>Total Scores</div>
 
-      {props.scores.map((score) => {
-        return <div className={`${basis} text-center`}>{score}</div>;
+      {props.scores.map((score, index) => {
+        return (
+          <div key={index} className={`${basis} text-center`}>
+            {score}
+          </div>
+        );
       })}
     </>
   );

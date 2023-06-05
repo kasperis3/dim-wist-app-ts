@@ -25,9 +25,9 @@ const Board = (props: iProps) => {
       <div className={`flex flex-row m-.5`}>
         <Header numPlayers={props.numPlayers} />
       </div>
-      {props.rows.map((row: Row, i: number) => {
+      {props.rows.map((row: Row, index: number) => {
         return (
-          <div className={`flex flex-row m-.5`}>
+          <div key={index} className={`flex flex-row m-.5`}>
             <RowDisplay
               row={row}
               numPlayers={props.numPlayers}

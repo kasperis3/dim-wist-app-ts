@@ -10,7 +10,7 @@ interface iProps {
 }
 
 function RowDisplay(props: iProps) {
-  console.log(props.row);
+  // console.log(props.row);
   const [bets, setBets] = useState(props.row.bets);
   const [gets, setGets] = useState(props.row.gets);
 
@@ -23,7 +23,7 @@ function RowDisplay(props: iProps) {
     props.row.bets[index] = bet;
     props.row.totalSoFar += bet;
     props.row.numberBetsPlaced++;
-    console.log("inside handlebet", props);
+    // console.log("inside handlebet", props);
     setBets(newBets);
   };
 
@@ -66,6 +66,7 @@ function RowDisplay(props: iProps) {
       {[...Array(props.numPlayers)].map((_, index) => {
         return (
           <BegetCell
+            key={index}
             index={index}
             row={props.row}
             handleReset={handleReset}
